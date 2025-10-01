@@ -97,7 +97,7 @@ Start your AI assistant in the Amplifier directory to get all enhancements autom
 cd amplifier
 claude  # If using Claude Code
 # OR
-gh copilot  # If using GitHub Copilot (see COPILOT_SUPPORT.md for details)
+copilot  # If using GitHub Copilot (see COPILOT_SUPPORT.md for details)
 ```
 
 ### Using with Your Own Projects
@@ -112,7 +112,7 @@ Want Amplifier's power on your own code? Easy:
    
    # If using GitHub Copilot, navigate to your project directory
    cd /path/to/your/project
-   gh copilot
+   copilot
    ```
 
 2. **Tell your AI assistant where to work** (paste as first message):
