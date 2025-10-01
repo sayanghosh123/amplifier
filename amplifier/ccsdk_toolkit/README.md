@@ -1,6 +1,6 @@
-# Claude Code SDK Toolkit
+# CCSDK Toolkit (AI Provider Support)
 
-A comprehensive Python toolkit for building CLI tools and applications with the Claude Code SDK. Simplifies creating "mini-instances" of Claude Code for focused microtasks.
+A comprehensive Python toolkit for building CLI tools and applications with AI providers including Claude Code SDK and GitHub Copilot CLI. Simplifies creating "mini-instances" of your AI assistant for focused microtasks.
 
 ## Quick Start: Building a New Tool
 
@@ -37,12 +37,17 @@ The template includes patterns proven through learnings from real failures. See 
 
 ## Installation
 
-```bash
-# Install Python package
-pip install claude-code-sdk
+> [!NOTE]
+> This toolkit now supports both **Claude Code SDK** and **GitHub Copilot CLI**. See [`COPILOT_SUPPORT.md`](COPILOT_SUPPORT.md) for Copilot setup details.
 
-# Install Claude CLI (required)
+```bash
+# For Claude Code SDK
+pip install claude-code-sdk
 npm install -g @anthropic-ai/claude-code
+
+# For GitHub Copilot CLI
+gh extension install github/gh-copilot
+# OR follow standalone installation: https://docs.github.com/copilot
 
 # Or if using the amplifier project
 uv add claude-code-sdk
@@ -77,6 +82,26 @@ async def main():
 asyncio.run(main())
 ```
 
+**Using GitHub Copilot instead:**
+
+```python
+from amplifier.ccsdk_toolkit import CopilotSession, SessionOptions
+
+async def main():
+    options = SessionOptions(
+        system_prompt="You are a helpful code assistant",
+        max_turns=1,
+    )
+
+    async with CopilotSession(options) as session:
+        response = await session.query("Write a Python hello world")
+        # ... same as above
+
+asyncio.run(main())
+```
+
+See [`COPILOT_SUPPORT.md`](COPILOT_SUPPORT.md) for more details on using GitHub Copilot CLI.
+
 ### With Retry Logic
 
 ```python
@@ -92,19 +117,27 @@ response = await query_with_retry(
 
 ### 1. Core (`ccsdk_toolkit.core`)
 
-The foundation module providing Claude Code SDK integration:
+The foundation module providing AI provider integration (Claude Code SDK and GitHub Copilot CLI):
 
 ```python
 from amplifier.ccsdk_toolkit import (
-    ClaudeSession,      # Main session class
+    ClaudeSession,      # Claude Code SDK session
+    CopilotSession,     # GitHub Copilot CLI session
+    create_session,     # Factory for provider selection
+    AIProvider,         # Provider enum (CLAUDE, COPILOT)
     SessionOptions,     # Configuration options
-    check_claude_cli,   # Verify CLI installation
+    check_claude_cli,   # Verify Claude CLI installation
     query_with_retry,   # Retry logic wrapper
 )
 
 # Check CLI availability
 if check_claude_cli():
     print("Claude CLI is available")
+
+# Use factory pattern for provider selection
+options = SessionOptions(provider=AIProvider.COPILOT)
+async with create_session(options) as session:
+    response = await session.query("Hello")
 ```
 
 ### 2. Configuration (`ccsdk_toolkit.config`)
