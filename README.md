@@ -51,7 +51,7 @@ Before starting, you'll need:
    make install
    ```
 
-   This installs Python dependencies, the Claude CLI, and sets up your environment.
+   This installs Python dependencies and sets up your environment. For AI assistant setup, see the [AI Provider Support](#ai-provider-support) note above.
 
 3. **Configure your data directories** (Recommended but optional):
 
@@ -91,24 +91,31 @@ Before starting, you'll need:
 
 ### Basic Usage
 
-Start Claude in the Amplifier directory to get all enhancements automatically:
+Start your AI assistant in the Amplifier directory to get all enhancements automatically:
 
 ```bash
 cd amplifier
-claude  # Everything is pre-configured and ready
+claude  # If using Claude Code
+# OR
+gh copilot  # If using GitHub Copilot (see COPILOT_SUPPORT.md for details)
 ```
 
 ### Using with Your Own Projects
 
 Want Amplifier's power on your own code? Easy:
 
-1. **Start Claude with both directories**:
+1. **Start your AI assistant with both directories**:
 
    ```bash
+   # If using Claude Code
    claude --add-dir /path/to/your/project
+   
+   # If using GitHub Copilot, navigate to your project directory
+   cd /path/to/your/project
+   gh copilot
    ```
 
-2. **Tell Claude where to work** (paste as first message):
+2. **Tell your AI assistant where to work** (paste as first message):
 
    ```
    I'm working in /path/to/your/project which doesn't have Amplifier files.
@@ -151,7 +158,7 @@ Shows:
 - Model name with cost-tier coloring (red=high, yellow=medium, blue=low)
 - Running session cost and duration
 
-Enable with:
+Enable with (Claude Code only):
 
 ```
 /statusline use the script at .claude/tools/statusline-example.sh
@@ -195,7 +202,7 @@ Instead of one generalist AI, you get 20+ specialists:
 
 ### Knowledge Base
 
-**Why use this?** Stop losing insights. Every document, specification, design decision, and lesson learned becomes part of your permanent knowledge that Claude can instantly access.
+**Why use this?** Stop losing insights. Every document, specification, design decision, and lesson learned becomes part of your permanent knowledge that your AI assistant can instantly access.
 
 > [!NOTE]
 > Knowledge extraction is an evolving feature that continues to improve with each update.
@@ -216,7 +223,7 @@ Instead of one generalist AI, you get 20+ specialists:
 
 ### Conversation Transcripts
 
-**Never lose context again.** Amplifier automatically exports your entire conversation before compaction, preserving all the details that would otherwise be lost. When Claude Code compacts your conversation to stay within token limits, you can instantly restore the full history.
+**Never lose context again.** Amplifier automatically exports your entire conversation before compaction, preserving all the details that would otherwise be lost. When your AI assistant (Claude Code) compacts your conversation to stay within token limits, you can instantly restore the full history.
 
 **Automatic Export**: A PreCompact hook captures your conversation before any compaction event:
 
@@ -227,7 +234,7 @@ Instead of one generalist AI, you get 20+ specialists:
 **Easy Restoration**: Use the `/transcripts` command in Claude Code to restore your full conversation:
 
 ```
-/transcripts  # Restores entire conversation history
+/transcripts  # Restores entire conversation history (Claude Code only)
 ```
 
 The transcript system helps you:
@@ -247,7 +254,7 @@ make transcript-restore         # Restore full lineage (for CLI use)
 
 ### Modular Builder (Lite)
 
-A one-command workflow to go from an idea to a module (**Contract & Spec → Plan → Generate → Review**) inside the Amplifier Claude Code environment.
+A one-command workflow to go from an idea to a module (**Contract & Spec → Plan → Generate → Review**) inside the Amplifier AI environment (currently optimized for Claude Code).
 
 - **Run inside a Claude Code session:**
   ```
@@ -317,9 +324,10 @@ See [AMPLIFIER_VISION.md](AMPLIFIER_VISION.md) for details.
 
 ## Current Limitations
 
-- Knowledge extraction works best in Claude environment
+- Knowledge extraction works best with Claude Code SDK
 - Processing time: ~10-30 seconds per document
 - Memory system still in development
+- Some features (like conversation transcripts) are Claude Code-specific
 
 ---
 

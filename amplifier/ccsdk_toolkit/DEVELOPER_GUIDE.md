@@ -1,6 +1,9 @@
-# Claude Code SDK Developer Guide
+# AI-Native Development Guide (CCSDK Toolkit)
 
-_A strategic guide for building AI-native development tools in the Claude Code ecosystem_
+_A strategic guide for building AI-native development tools with Claude Code SDK and GitHub Copilot CLI_
+
+> [!NOTE]
+> This guide primarily focuses on Claude Code SDK patterns, though many concepts apply to other AI providers. See [`COPILOT_SUPPORT.md`](COPILOT_SUPPORT.md) for GitHub Copilot CLI specifics.
 
 ## Table of Contents
 
@@ -16,7 +19,7 @@ _A strategic guide for building AI-native development tools in the Claude Code e
 
 ## The Core Idea: Metacognitive Recipes
 
-The Claude Code SDK enables a fundamental shift: **use code for structure, AI for intelligence**.
+AI provider SDKs (like Claude Code SDK) enable a fundamental shift: **use code for structure, AI for intelligence**.
 
 Instead of trying to get AI to handle complex multi-step reasoning (which often fails), we decompose problems into small, focused AI microtasks orchestrated by deterministic code. Think of it as writing "recipes" where:
 

@@ -313,7 +313,7 @@ echo "Ready to work on $1!"
 Each worktree can use all Amplifier agents:
 ```bash
 cd ../amplifier.my-experiment
-claude  # Start Claude with all agents available
+claude  # Start your AI assistant (e.g., Claude Code or GitHub Copilot)
 # "Use zen-architect to design this experiment"
 ```
 

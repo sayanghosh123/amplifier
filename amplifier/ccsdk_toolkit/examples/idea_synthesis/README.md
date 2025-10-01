@@ -1,6 +1,6 @@
 # Idea Synthesis Tool
 
-A Claude Code SDK-powered tool that synthesizes insights from markdown documentation through a 4-stage AI pipeline.
+An AI-powered tool that synthesizes insights from markdown documentation through a 4-stage pipeline (uses Claude Code SDK).
 
 ## Overview
 
@@ -147,5 +147,8 @@ idea_synthesis/
 ## Requirements
 
 - Python 3.11+
-- Claude Code SDK CLI installed globally
+- Claude Code SDK CLI installed globally (`npm install -g @anthropic-ai/claude-code`)
 - Access to Claude Code API
+
+> [!NOTE]
+> This example is optimized for Claude Code SDK. GitHub Copilot CLI support is not yet available for this use case.

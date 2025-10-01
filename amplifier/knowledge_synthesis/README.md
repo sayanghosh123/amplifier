@@ -1,14 +1,14 @@
 # Knowledge Synthesis Module
 
-Simple, direct knowledge extraction from text using Claude Code SDK.
+Simple, direct knowledge extraction from text using AI providers (optimized for Claude Code SDK).
 
 ## Overview
 
-This module provides a streamlined approach to extracting structured knowledge from text documents and content files. It extracts concepts, relationships, insights, and patterns in a single pass through Claude.
+This module provides a streamlined approach to extracting structured knowledge from text documents and content files. It extracts concepts, relationships, insights, and patterns in a single pass through your AI assistant (currently optimized for Claude Code SDK).
 
 ## Key Features
 
-- **Single-pass extraction**: One Claude call extracts everything
+- **Single-pass extraction**: One AI call extracts everything
 - **JSON Lines storage**: Simple, incremental, queryable format
 - **Incremental processing**: Tracks what's been processed, skips duplicates
 - **Direct integration**: Works with content from configured directories
@@ -124,11 +124,14 @@ Examples of event types:
 - `click`: For CLI
 - Standard library only for core functionality
 
+> [!NOTE]
+> Knowledge extraction currently works best with Claude Code SDK. GitHub Copilot CLI support is not yet optimized for this use case.
+
 ## Design Philosophy
 
 Following the project's ruthless simplicity principle:
 - No complex graph databases
-- No unnecessary chunking (Claude handles 100K+ tokens)
+- No unnecessary chunking (AI models handle 100K+ tokens)
 - No over-engineered abstractions
 - Direct, obvious code paths
 - One way to do things
@@ -137,5 +140,5 @@ Following the project's ruthless simplicity principle:
 
 - Works best within Claude Code environment where SDK is available
 - Outside Claude Code, extraction returns empty results
-- Uses 120-second timeout for Claude operations
+- Uses 120-second timeout for AI operations
 - Automatically strips markdown formatting from responses
