@@ -12,7 +12,7 @@ Meanwhile, the space of possibilities keeps expanding. New papers, blog posts, f
 
 Amplifier is a system that multiplies human capability through AI partnership. It's not about replacing human creativity or judgment — it's about amplifying it by orders of magnitude.
 
-**But here's the key insight**: The bottleneck isn't the AI's capability — modern AI like Claude Code is incredibly powerful. The bottleneck is that vanilla AI lacks:
+**But here's the key insight**: The bottleneck isn't the AI's capability — modern AI assistants are incredibly powerful. The bottleneck is that vanilla AI lacks:
 
 - Your specific domain knowledge
 - Understanding of your patterns and preferences
@@ -20,7 +20,7 @@ Amplifier is a system that multiplies human capability through AI partnership. I
 - Ability to work on multiple things simultaneously
 - Integration with your development workflow
 
-**Amplifier solves this by creating a supercharged environment** where AI assistants like Claude Code become dramatically more effective. We're not building another AI — we're building the environment that makes AI 10x more capable.
+**Amplifier solves this by creating a supercharged environment** where AI assistants (like Claude Code or GitHub Copilot) become dramatically more effective. We're not building another AI — we're building the environment that makes AI 10x more capable.
 
 ### What Amplification Means
 
@@ -81,12 +81,12 @@ Make complex workflows repeatable:
 - Executes dependably
 - Shares recipes with others
 
-### 5. Claude Code Integration
+### 5. AI Assistant Integration
 
 Leverage specialized AI capabilities:
 
-- Sub-agents for focused tasks
-- SDK for programmatic control
+- Sub-agents for focused tasks (Claude Code)
+- SDK for programmatic control (Claude Code SDK, GitHub Copilot CLI)
 - Hooks for workflow automation
 - Output styles for consistent formatting
 - Context forking for parallel work
@@ -173,7 +173,7 @@ This creates an exponential growth in capability over time.
 ### Phase 2: Recipes (Next)
 
 - Recipe definition language
-- Claude Code SDK integration
+- AI provider SDK integration (Claude, Copilot, etc.)
 - Dependable execution framework
 - Recipe sharing and discovery
 
@@ -195,7 +195,7 @@ This creates an exponential growth in capability over time.
 
 **Critical principle: We're not married to any particular AI technology.**
 
-Today we use Claude Code because it's the current best tool. Tomorrow it might be:
+Today we support multiple AI assistants (Claude Code, GitHub Copilot) because different tools work best for different use cases. Tomorrow it might include:
 
 - GPT-5 with better capabilities
 - Open source models we can fine-tune
@@ -217,13 +217,13 @@ All of this is portable. When better AI comes along, we switch. The amplificatio
 
 We're not building another dev tool. We're changing the fundamental equation of human capability.
 
-**Without Amplifier**: Even with Claude Code, you're constantly repeating context, correcting mistakes, and hand-holding the AI through complex tasks.
+**Without Amplifier**: Even with powerful AI assistants, you're constantly repeating context, correcting mistakes, and hand-holding the AI through complex tasks.
 
-**With Amplifier**: Claude Code becomes a true force multiplier that can tackle complex problems with minimal guidance, drawing from your knowledge base and following your patterns.
+**With Amplifier**: Your AI assistant becomes a true force multiplier that can tackle complex problems with minimal guidance, drawing from your knowledge base and following your patterns.
 
 Today, a developer might explore 1-2 solutions to a problem. With Amplifier, they could explore 20 simultaneously using parallel worktrees.
 
-Today, reading 100 articles might take weeks with fragmented insights. With Amplifier, it takes hours with structured knowledge that Claude Code can instantly access.
+Today, reading 100 articles might take weeks with fragmented insights. With Amplifier, it takes hours with structured knowledge that your AI assistant can instantly access.
 
 Today, every interaction with AI starts from zero. With Amplifier, every interaction builds on previous learnings.
 
