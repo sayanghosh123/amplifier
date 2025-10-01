@@ -11,6 +11,9 @@
 
 We've taken our learnings about what works in AI-assisted development and packaged them into a ready-to-use environment. Instead of starting from scratch every session, you get immediate access to proven patterns, specialized agents for different tasks, and workflows that actually work.
 
+> [!NOTE]
+> **AI Provider Support**: Amplifier now supports both **Claude Code SDK** and **GitHub Copilot CLI** as AI providers. Choose the one that works best for your workflow. See [`amplifier/ccsdk_toolkit/COPILOT_SUPPORT.md`](amplifier/ccsdk_toolkit/COPILOT_SUPPORT.md) for details on using GitHub Copilot CLI.
+
 **Amplifier provides powerful tools and systems:**
 
 - **20+ Specialized Agents**: Each expert in specific tasks (architecture, debugging, security, etc.)

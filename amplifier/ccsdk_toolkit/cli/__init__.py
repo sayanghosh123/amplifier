@@ -70,7 +70,10 @@ class CliBuilder:
                 import click
                 from amplifier.ccsdk_toolkit import (
                     ClaudeSession,
+                    CopilotSession,
                     SessionOptions,
+                    AIProvider,
+                    create_session,
                     ToolkitLogger,
                     LogLevel,
                     LogFormat,
@@ -82,26 +85,29 @@ class CliBuilder:
                 @click.option("--max-turns", default=1, help="Maximum conversation turns")
                 @click.option("--verbose", is_flag=True, help="Enable verbose logging")
                 @click.option("--output", type=click.Path(), help="Output file path")
-                def main(input_text: str, max_turns: int, verbose: bool, output: Optional[str]):
+                @click.option("--provider", type=click.Choice(["claude", "copilot"]), default="claude", help="AI provider to use")
+                def main(input_text: str, max_turns: int, verbose: bool, output: Optional[str], provider: str):
                     """{{ description }}"""
-                    asyncio.run(process(input_text, max_turns, verbose, output))
+                    asyncio.run(process(input_text, max_turns, verbose, output, provider))
 
 
-                async def process(input_text: str, max_turns: int, verbose: bool, output: Optional[str]):
-                    """Process the input with Claude"""
+                async def process(input_text: str, max_turns: int, verbose: bool, output: Optional[str], provider: str):
+                    """Process the input with the selected AI provider"""
                     # Set up logging
                     log_level = LogLevel.DEBUG if verbose else LogLevel.INFO
                     logger = ToolkitLogger(name="{{ name }}", level=log_level)
 
-                    # Configure session
+                    # Configure session with provider
+                    ai_provider = AIProvider.CLAUDE if provider == "claude" else AIProvider.COPILOT
                     options = SessionOptions(
                         system_prompt="{{ system_prompt }}",
                         max_turns=max_turns,
+                        provider=ai_provider,
                     )
 
                     try:
-                        async with ClaudeSession(options) as session:
-                            logger.info("Starting query", input=input_text[:100])
+                        async with create_session(options) as session:
+                            logger.info(f"Starting query with {provider}", input=input_text[:100])
 
                             response = await session.query(input_text)
 
@@ -139,7 +145,7 @@ class CliBuilder:
                 """
                 {{ description }}
 
-                Analyzes files or directories using Claude Code SDK.
+                Analyzes files or directories using AI providers (Claude or GitHub Copilot).
                 """
 
                 import asyncio
@@ -150,7 +156,10 @@ class CliBuilder:
                 import click
                 from amplifier.ccsdk_toolkit import (
                     ClaudeSession,
+                    CopilotSession,
                     SessionOptions,
+                    AIProvider,
+                    create_session,
                     AgentDefinition,
                     ToolkitLogger,
                     LogLevel,
@@ -163,9 +172,10 @@ class CliBuilder:
                 @click.option("--recursive", is_flag=True, help="Analyze recursively")
                 @click.option("--output-format", type=click.Choice(["json", "text"]), default="text")
                 @click.option("--verbose", is_flag=True, help="Enable verbose logging")
-                def main(target: str, pattern: str, recursive: bool, output_format: str, verbose: bool):
+                @click.option("--provider", type=click.Choice(["claude", "copilot"]), default="claude", help="AI provider to use")
+                def main(target: str, pattern: str, recursive: bool, output_format: str, verbose: bool, provider: str):
                     """{{ description }}"""
-                    asyncio.run(analyze(Path(target), pattern, recursive, output_format, verbose))
+                    asyncio.run(analyze(Path(target), pattern, recursive, output_format, verbose, provider))
 
 
                 async def analyze(
@@ -173,7 +183,8 @@ class CliBuilder:
                     pattern: str,
                     recursive: bool,
                     output_format: str,
-                    verbose: bool
+                    verbose: bool,
+                    provider: str
                 ):
                     """Analyze the target path"""
                     # Set up logging
@@ -197,15 +208,19 @@ class CliBuilder:
                         tools=["Read", "Grep", "Glob"],
                     )
 
+                    ai_provider = AIProvider.CLAUDE if provider == "claude" else AIProvider.COPILOT
                     options = SessionOptions(
                         system_prompt=agent.system_prompt,
                         max_turns=3,
+                        provider=ai_provider,
                     )
 
                     results = []
 
                     try:
-                        async with ClaudeSession(options) as session:
+                        async with create_session(options) as session:
+                            logger.info(f"Using {provider} provider")
+                            
                             for file_path in files:
                                 logger.info(f"Analyzing {file_path}")
 

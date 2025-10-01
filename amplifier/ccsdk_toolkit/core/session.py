@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 from typing import Any
 
+from .base_session import AISession
 from .models import SessionOptions
 from .models import SessionResponse
 
@@ -18,7 +19,7 @@ class SDKNotAvailableError(SessionError):
     """Raised when Claude CLI/SDK is not available."""
 
 
-class ClaudeSession:
+class ClaudeSession(AISession):
     """Async context manager for Claude Code SDK sessions.
 
     This provides a robust wrapper around the claude_code_sdk with:
@@ -33,8 +34,7 @@ class ClaudeSession:
         Args:
             options: Session configuration options
         """
-        self.options = options or SessionOptions()
-        self.client = None
+        super().__init__(options)
         self._check_prerequisites()
 
     def _check_prerequisites(self):

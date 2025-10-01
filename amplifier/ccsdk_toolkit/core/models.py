@@ -1,14 +1,22 @@
 """Data models for CCSDK Core module."""
 
 from collections.abc import Callable
+from enum import Enum
 from typing import Any
 
 from pydantic import BaseModel
 from pydantic import Field
 
 
+class AIProvider(str, Enum):
+    """Supported AI providers."""
+
+    CLAUDE = "claude"
+    COPILOT = "copilot"
+
+
 class SessionOptions(BaseModel):
-    """Configuration options for Claude sessions.
+    """Configuration options for AI sessions.
 
     Attributes:
         system_prompt: System prompt for the session
@@ -17,6 +25,7 @@ class SessionOptions(BaseModel):
         retry_delay: Initial retry delay in seconds (default: 1.0)
         stream_output: Enable real-time streaming output (default: False)
         progress_callback: Optional callback for progress updates
+        provider: AI provider to use (default: claude)
     """
 
     system_prompt: str = Field(default="You are a helpful assistant")
@@ -29,6 +38,10 @@ class SessionOptions(BaseModel):
         description="Optional callback for progress updates",
         exclude=True,  # Exclude from serialization since callables can't be serialized
     )
+    provider: AIProvider = Field(
+        default=AIProvider.CLAUDE,
+        description="AI provider to use (claude or copilot)"
+    )
 
     class Config:
         json_schema_extra = {
@@ -38,6 +51,7 @@ class SessionOptions(BaseModel):
                 "retry_attempts": 3,
                 "retry_delay": 1.0,
                 "stream_output": False,  # Streaming disabled by default
+                "provider": "claude",
             }
         }
 
