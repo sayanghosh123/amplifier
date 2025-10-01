@@ -331,14 +331,14 @@ make knowledge-query Q="authentication patterns"
 Test multiple approaches while preserving conversation history:
 ```bash
 # In worktree 1
-claude  # Design approach A
-# /compact when needed (auto-saves transcript)
+claude  # Or your AI assistant - design approach A
+# /compact when needed (auto-saves transcript in Claude Code)
 
 # In worktree 2
-claude  # Design approach B
-# /compact when needed (separate transcript)
+claude  # Or your AI assistant - design approach B
+# /compact when needed (separate transcript in Claude Code)
 
-# Later, compare transcripts
+# Later, compare transcripts (Claude Code feature)
 make transcript-search TERM="performance"
 ```
 

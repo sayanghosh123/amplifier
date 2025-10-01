@@ -119,8 +119,9 @@ The system follows principles of **ruthless simplicity**:
 ## Troubleshooting
 
 ### "No Claude Code SDK available"
-- Knowledge extraction requires Claude Code environment
-- Outside Claude Code, extraction returns empty results
+- Knowledge extraction currently requires Claude Code environment
+- Outside Claude Code environment, extraction returns empty results
+- GitHub Copilot CLI support is not yet optimized for this use case
 
 ### "Content not found"
 ```bash
